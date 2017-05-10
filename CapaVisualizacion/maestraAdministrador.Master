@@ -1,0 +1,195 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="maestraAdministrador.master.cs" Inherits="CapaVisualizacion.maestraAdministrador" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+    <link href="css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="css/datepicker3.css" rel="stylesheet"/>
+    <link href="css/styles.css" rel="stylesheet"/>
+
+    <!--Icons-->
+    <script src="js/lumino.glyphs.js"></script>
+
+<!--Icons-->
+<script src="js/lumino.glyphs.js"></script>
+
+</head>
+<body>
+   <body>
+	<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#sidebar-collapse">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+                <img src="IMG/logo_seta%20(1).png" style="height: 50px; width: 70px" />
+                <a class="navbar-brand" href="#">
+                    <span>Adminis</span>tración</a>
+                
+				<ul class="user-menu">
+					<li class="dropdown pull-right">
+						<a href="" class="dropdown-toggle" data-toggle="dropdown"><svg class="glyph stroked male-user"><use xlink:href="#stroked-male-user"></use></svg> <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label> <span class="caret"></span></a>
+						<ul class="dropdown-menu" role="menu">
+							<li><a href="#"><svg class="glyph stroked male-user"><use xlink:href="#stroked-male-user"></use></svg> Perfil</a></li>
+							<li><a href="logout.aspx"><svg class="glyph stroked cancel"><use xlink:href="#stroked-cancel"></use></svg> Logout</a></li>
+						</ul>
+					</li>
+				</ul>
+			</div>
+							
+		</div><!-- /.container-fluid -->
+	</nav>
+		<br />
+	<div id="sidebar-collapse" class="col-sm-3 col-lg-2 sidebar">
+		<!--<form role="search">
+			<div class="form-group">
+				<input type="text" class="form-control" placeholder="Search">
+			</div>
+		</form>-->
+	
+		<br><br>
+		<ul class="nav menu">
+
+          <%--  MENU
+			<li class="parent ">
+				<a href="#">
+					<span data-toggle="collapse" href="#sub-item-1"><svg class="glyph stroked chevron-down"><use xlink:href="#stroked-chevron-down"></use></svg></span> Dropdown 
+				</a>
+				<ul class="children collapse" id="sub-item-1">
+					<li>
+						<a class="" href="#">
+							<svg class="glyph stroked chevron-right"><use xlink:href="#stroked-chevron-right"></use></svg> Sub Item 1
+						</a>
+					</li>
+					<li>
+						<a class="" href="#">
+							<svg class="glyph stroked chevron-right"><use xlink:href="#stroked-chevron-right"></use></svg> Sub Item 2
+						</a>
+					</li>
+					<li>
+						<a class="" href="#">
+							<svg class="glyph stroked chevron-right"><use xlink:href="#stroked-chevron-right"></use></svg> Sub Item 3
+						</a>
+					</li>
+				</ul>
+			</li>
+			<li role="presentation" class="divider"></li>
+			<li>
+                        <a href="javascript:;" data-toggle="collapse" data-target="#demo"><i class="fa fa-fw fa-arrows-v active"></i> Administracion de Usuarios <i class="fa fa-fw fa-caret-down"></i></a>
+                        <ul id="demo" class="collapse">
+                             <li>
+                                <a href="agregaPerfil.aspx" >Agregar Perfil</a>
+                            </li>
+                            <li>
+                                <a href="agregaUsuario.aspx" >Agregar Usuario</a>
+                            </li>
+                            <li>
+                                <a href="editaVendedor.aspx">Listado de Usuarios</a>
+                            </li>
+                            <!--
+                            <li>
+                                <a href="">Eliminar Vendedor</a>
+                            </li>-->
+                            <%--<li>
+                                <a href="ListarVendedores.aspx">Listar Vendedores</a>
+                            </li>
+                        </ul>
+                    </li>--%>
+            <ul class="nav nav-pills nav-stacked">
+            	
+              <li class="active"><a href="#">MENU</a></li>
+
+              <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#">Perfiles
+                <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                  <li><a href="agregaPerfil.aspx">Agregar Perfil</a></li>
+                </ul>
+              </li>
+              <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#">Servicios<span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                  <li><a href="agregaServicio.aspx">Agregar Servicio</a></li>
+                </ul>
+              </li>
+              <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#">Vales<span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                  <li><a href="agregaVales.aspx">Agregar Vales</a></li>
+                </ul>
+              </li>
+              <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#">Usuarios
+                <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                  <li><a href="agregaUsuario.aspx">Agregar Usuario</a></li>
+                </ul>
+              </li>
+              
+            </ul>
+
+		</ul>                   
+		
+	</div><!--/.sidebar-->
+		
+	<div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">			
+		<div class="row">
+			<ol class="breadcrumb">
+				<li><a href="#"><svg class="glyph stroked home"><use xlink:href="#stroked-home"></use></svg></a></li>
+				<li class="active">Home</li>
+			</ol>
+		</div><!--/.row-->
+
+
+
+		 <div>
+			 <div>
+	        	<center>
+	        	    <img src="IMG/logo_seta%20(1).png" style="height: 78px; width: 110px" />
+	        	</center>
+	         </div>
+        <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+
+        </asp:ContentPlaceHolder>
+    	</div>
+		</div>
+		
+		
+		
+
+	<script src="js/jquery-1.11.1.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/chart.min.js"></script>
+	<script src="js/chart-data.js"></script>
+	<script src="js/easypiechart.js"></script>
+	<script src="js/easypiechart-data.js"></script>
+	<script src="js/bootstrap-datepicker.js"></script>
+	<script>
+		$('#calendar').datepicker({
+		});
+
+		!function ($) {
+		    $(document).on("click","ul.nav li.parent > a > span.icon", function(){          
+		        $(this).find('em:first').toggleClass("glyphicon-minus");      
+		    }); 
+		    $(".sidebar span.icon").find('em:first').addClass("glyphicon-plus");
+		}(window.jQuery);
+
+		$(window).on('resize', function () {
+		  if ($(window).width() > 768) $('#sidebar-collapse').collapse('show')
+		})
+		$(window).on('resize', function () {
+		  if ($(window).width() <= 767) $('#sidebar-collapse').collapse('hide')
+		})
+	</script>	
+</body>
+</body>
+</html>
