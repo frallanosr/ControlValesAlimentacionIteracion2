@@ -10,6 +10,7 @@
 
         <style type="text/css">
             #contenedor {
+
                 border-left-style: solid;
                 border-right-style: solid;
                 border-top-style: solid;
