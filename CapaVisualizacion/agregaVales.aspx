@@ -93,9 +93,8 @@
                     </div>
                     <asp:GridView ID="GridView1" runat="server" DataSourceID="SqlDataSource3" AutoGenerateColumns="False" BackColor="White" BorderColor="#3366CC" BorderStyle="None" BorderWidth="1px" CellPadding="4">
                         <Columns>
-                            <asp:BoundField DataField="V_NOMBREPERFIL" HeaderText="TIPO VALE" SortExpression="V_NOMBREPERFIL" />
-                            <asp:BoundField DataField="T_NOMBRE" HeaderText="NOMBRE TURNO" SortExpression="T_NOMBRE" />
-                            <asp:BoundField DataField="EXPR1" HeaderText="VALOR" SortExpression="EXPR1" />
+                            <asp:BoundField DataField="EXPR1" HeaderText="EXPR1" SortExpression="EXPR1" />
+                            <asp:BoundField DataField="T_NOMBRE" HeaderText="T_NOMBRE" SortExpression="T_NOMBRE" />
                         </Columns>
                         <FooterStyle BackColor="#99CCCC" ForeColor="#003399" />
                         <HeaderStyle BackColor="#003399" Font-Bold="True" ForeColor="#CCCCFF" />
@@ -107,7 +106,7 @@
                         <SortedDescendingCellStyle BackColor="#D6DFDF" />
                         <SortedDescendingHeaderStyle BackColor="#002876" />
                     </asp:GridView>
-                    <asp:SqlDataSource ID="SqlDataSource3" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" ProviderName="<%$ ConnectionStrings:ConnectionString.ProviderName %>" SelectCommand="SELECT VALE.V_NOMBREPERFIL, TO_CHAR(VALE.V_VALOR, '$999999') AS EXPR1, TURNO.T_NOMBRE FROM VALE, TURNO WHERE VALE.TURNO_IDTURNO = TURNO.IDTURNO"></asp:SqlDataSource>
+                    <asp:SqlDataSource ID="SqlDataSource3" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" ProviderName="<%$ ConnectionStrings:ConnectionString.ProviderName %>" SelectCommand="SELECT TO_CHAR(VALE.V_VALOR, '$999999') AS EXPR1, TURNO.T_NOMBRE FROM VALE, TURNO WHERE VALE.TURNO_IDTURNO = TURNO.IDTURNO"></asp:SqlDataSource>
                     <br />
 
                     <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" ProviderName="<%$ ConnectionStrings:ConnectionString.ProviderName %>"

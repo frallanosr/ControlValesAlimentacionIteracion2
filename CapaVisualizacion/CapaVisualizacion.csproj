@@ -114,6 +114,7 @@
     </Content>
     <Content Include="maestraLogin.Master" />
     <Content Include="maestraAdministrador.Master" />
+    <Content Include="maestraTotem.Master" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -124,6 +125,7 @@
   <ItemGroup>
     <Content Include="Login.aspx" />
     <Content Include="test.aspx" />
+    <Content Include="VistaNormal.aspx" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -192,6 +194,13 @@
     <Compile Include="maestraLogin.Master.designer.cs">
       <DependentUpon>maestraLogin.Master</DependentUpon>
     </Compile>
+    <Compile Include="maestraTotem.Master.cs">
+      <DependentUpon>maestraTotem.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="maestraTotem.Master.designer.cs">
+      <DependentUpon>maestraTotem.Master</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="test.aspx.cs">
       <DependentUpon>test.aspx</DependentUpon>
@@ -199,6 +208,13 @@
     </Compile>
     <Compile Include="test.aspx.designer.cs">
       <DependentUpon>test.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="VistaNormal.aspx.cs">
+      <DependentUpon>VistaNormal.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="VistaNormal.aspx.designer.cs">
+      <DependentUpon>VistaNormal.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

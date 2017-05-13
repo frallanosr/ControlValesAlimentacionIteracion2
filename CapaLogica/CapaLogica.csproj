@@ -42,6 +42,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="PerfilServicio\PerfilServicio.cs" />
     <Compile Include="Perfil\Perfil.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Servicio\Servicio.cs" />
@@ -49,6 +50,7 @@
     <Compile Include="Usuario\Usuario.cs" />
     <Compile Include="Vales\Vales.cs" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

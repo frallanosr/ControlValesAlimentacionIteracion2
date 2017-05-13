@@ -24,7 +24,7 @@ namespace CapaDatos.RepositoryVales
             {
                OracleCommand cmd = new OracleCommand();
                cmd.Connection = cn;
-               cmd.CommandText = "INSERT INTO \"SISTEMA\".\"VALE\" (\"IDVALE\", \"V_VALOR\", \"V_IMPRESO\", \"V_USADO\", \"TURNO_IDTURNO\",\"V_NOMBREPERFIL\") VALUES (v_sequence.nextval, '"+v.valor+"', '"+v.v_impreso+"', '"+v.v_usado+"', '"+v.turno_idturno+"','"+v.nombrePerfil+"')";
+               cmd.CommandText = "INSERT INTO \"SISTEMA\".\"VALE\" (\"IDVALE\", \"V_VALOR\", \"V_IMPRESO\", \"V_USADO\", \"CASINO_IDCASINO\",\"TURNO_IDTURNO\") VALUES (v_sequence.nextval, '"+v.valor+"', '"+v.v_impreso+"', '"+v.v_usado+"', '"+v.casino_idcasino+"','"+v.turno_idturno+"')";
 
                cn.Open();
                 cmd.ExecuteNonQuery();

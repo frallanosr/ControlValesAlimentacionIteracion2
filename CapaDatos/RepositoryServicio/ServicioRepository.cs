@@ -24,12 +24,33 @@ namespace CapaDatos.RepositoryServicio
             {
                 OracleCommand cmd = new OracleCommand();
                 cmd.Connection = cn;
-                cmd.CommandText = "INSERT INTO \"SISTEMA\".\"SERVICIO\" (\"IDSERVICIO\", \"SE_NOMBRE\", \"SE_VALOR\", \"SE_INICIO\", \"SE_TERMINO\", \"SE_NOMBREPERFIL\")VALUES(s_sequence.nextval, '"+s.nombre+"', '"+s.valorServicio+ "',TO_DATE('" + s.horaInicio+ "', 'DD/MM/YYYY HH24:MI:SS'),TO_DATE('" + s.horaFin+ "', 'DD/MM/YYYY HH24:MI:SS'), '" + s.nombrePerfil+"')";
+                cmd.CommandText = "INSERT INTO \"SISTEMA\".\"SERVICIO\" (\"IDSERVICIO\", \"SE_NOMBRE\", \"SE_INICIO\", \"SE_TERMINO\")VALUES(s_sequence.nextval, '"+s.nombre+"', TO_DATE('" + s.horaInicio+ "', 'DD/MM/YYYY HH24:MI:SS'),TO_DATE('" + s.horaFin+ "', 'DD/MM/YYYY HH24:MI:SS'))";
 
                 cn.Open();
                 cmd.ExecuteNonQuery();
                 cn.Close();
             }
-        } 
+        }
+
+        public int buscaUltimoRegistro()
+        {
+            int id = 0;
+            using (OracleConnection cn = new OracleConnection(this.conexion))//crear conexion
+            {
+                cn.Open();
+                OracleCommand command = cn.CreateCommand();
+                command.CommandText = "Select \"IDSERVICIO\" from (select * from \"SISTEMA\".\"SERVICIO\" order by \"IDSERVICIO\" desc ) where rownum = 1 ";
+                OracleDataReader reader = command.ExecuteReader();
+                if (!reader.HasRows)//si no tiene regitros
+                {
+                    return id;
+                } while (reader.Read())
+                {
+                    return id = Convert.ToInt32(reader["IDSERVICIO"]);
+                }
+                cn.Close();
+            }
+            return id;
+        }
     }
 }

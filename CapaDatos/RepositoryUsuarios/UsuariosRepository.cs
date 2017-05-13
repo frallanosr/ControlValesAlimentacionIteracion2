@@ -95,7 +95,7 @@ namespace CapaDatos.RepositoryUsuarios
             {
                OracleCommand cmd = new OracleCommand();
                cmd.Connection = cn;
-               cmd.CommandText = "INSERT INTO \"SISTEMA\".\"USUARIO\" (\"RUT\", \"US_NOMBRE\", \"US_PATERNO\", \"US_MATERNO\", \"PASSWORD\",\"US_ESTADO\", \"PERFIL_IDPERFIL\", \"US_EMAIL\") VALUES ('"+u.rut+"', '"+u.us_nombre+"', '"+u.us_paterno+"', '"+u.us_materno+"', '"+u.password+"','"+u.us_estado+"', '"+u.idperfil+"', '"+u.email+"') ";
+               cmd.CommandText = "INSERT INTO \"SISTEMA\".\"USUARIO\" (\"RUT\", \"US_NOMBRE\", \"US_PATERNO\", \"US_MATERNO\", \"PASSWORD\",\"US_ESTADO\", \"US_EMAIL\", \"PERFIL_IDPERFIL\") VALUES ('" + u.rut+"', '"+u.us_nombre+"', '"+u.us_paterno+"', '"+u.us_materno+"', '"+u.password+"','"+u.us_estado+"', '"+u.email+"', '"+u.idperfil+"') ";
 
                cn.Open();
                 cmd.ExecuteNonQuery();

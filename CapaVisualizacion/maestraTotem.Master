@@ -1,0 +1,38 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="maestraTotem.master.cs" Inherits="CapaVisualizacion.maestraTotem" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+ <style>
+    .article {
+      float: left;
+      margin: 5px;
+      padding: 5px;
+      width: 300px;
+      height: 300px;
+      border: 1px solid black;
+    }
+ </style> 
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div style="border:1px black solid;">
+            <p>Bienvenido : </p>
+        </div>
+    <div>
+        <div class="article">
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+        
+            </asp:ContentPlaceHolder>
+        </div>
+        
+    </div>
+    </form>
+</body>
+</html>
+

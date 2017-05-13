@@ -45,8 +45,10 @@ namespace CapaVisualizacion
                 }
                 else if (lista.privilegio(rut, contraEncriptada) == "normal")
                 {
-                    this.Label1.Visible = true;
-                    Label1.Text = "NORMAL";
+                    Session.Add("rut_UsuarioNormal",rut);
+                    Response.Redirect("VistaNormal.aspx");
+                    //this.Label1.Visible = true;
+                    //Label1.Text = "NORMAL";
                 }
                 else if (lista.privilegio(rut, contraEncriptada) == "conPrivilegios")
                 {

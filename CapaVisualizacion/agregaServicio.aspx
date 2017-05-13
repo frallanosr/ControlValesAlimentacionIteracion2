@@ -44,9 +44,9 @@
                          </table>
                           <asp:TextBox ID="nombreDelServicio" required="true" runat="server" CssClass="form-control" placeholder="Nombre del servicio" ></asp:TextBox>   
 
-                          <asp:DropDownList ID="DropDownList1" CssClass="form-control" runat="server" DataSourceID="SqlDataSource1" DataTextField="P_CARGO" DataValueField="P_CARGO"></asp:DropDownList>
+                          <asp:DropDownList ID="DropDownList1" CssClass="form-control" runat="server" DataSourceID="SqlDataSource1" DataTextField="P_CARGO" DataValueField="IDPERFIL"></asp:DropDownList>
 
-                          <asp:SqlDataSource runat="server" ID="SqlDataSource1" ConnectionString='<%$ ConnectionStrings:ConnectionString %>' ProviderName='<%$ ConnectionStrings:ConnectionString.ProviderName %>' SelectCommand='SELECT "P_CARGO" FROM "PERFIL"'></asp:SqlDataSource>
+                          <asp:SqlDataSource runat="server" ID="SqlDataSource1" ConnectionString='<%$ ConnectionStrings:ConnectionString %>' ProviderName='<%$ ConnectionStrings:ConnectionString.ProviderName %>' SelectCommand='SELECT "P_CARGO","IDPERFIL" FROM "PERFIL"'></asp:SqlDataSource>
 
                           <asp:TextBox ID="valorDelServicio" runat="server" required="true" CssClass="form-control" placeholder="Valor del servicio" ></asp:TextBox>   
                           
@@ -83,12 +83,10 @@
                 <p>
                     <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" BackColor="White" BorderColor="White" BorderStyle="Ridge" BorderWidth="2px" CellPadding="3" CellSpacing="1" DataKeyNames="IDSERVICIO" DataSourceID="SqlDataSource2" GridLines="None">
                         <Columns>
-                            <asp:BoundField DataField="IDSERVICIO" HeaderText="N°" ReadOnly="True" SortExpression="IDSERVICIO" />
-                            <asp:BoundField DataField="SE_NOMBRE" HeaderText="NOMBRE SERVICIO" SortExpression="SE_NOMBRE" />
-                            <asp:BoundField DataField="SE_VALOR" HeaderText="VALOR" SortExpression="SE_VALOR" />
-                            <asp:BoundField DataField="EXPR1" HeaderText="HORA INICIO" SortExpression="EXPR1" />
-                            <asp:BoundField DataField="EXPR2" HeaderText="HORA FIN" SortExpression="EXPR2" />
-                            <asp:BoundField DataField="SE_NOMBREPERFIL" HeaderText="NOMBRE PERFIL" SortExpression="SE_NOMBREPERFIL" />
+                            <asp:BoundField DataField="IDSERVICIO" HeaderText="IDSERVICIO" ReadOnly="True" SortExpression="IDSERVICIO" />
+                            <asp:BoundField DataField="SE_NOMBRE" HeaderText="SE_NOMBRE" SortExpression="SE_NOMBRE" />
+                            <asp:BoundField DataField="EXPR1" HeaderText="EXPR1" SortExpression="EXPR1" />
+                            <asp:BoundField DataField="EXPR2" HeaderText="EXPR2" SortExpression="EXPR2" />
                         </Columns>
                         <FooterStyle BackColor="#C6C3C6" ForeColor="Black" />
                         <HeaderStyle BackColor="#4A3C8C" Font-Bold="True" ForeColor="#E7E7FF" />
@@ -100,7 +98,7 @@
                         <SortedDescendingCellStyle BackColor="#CAC9C9" />
                         <SortedDescendingHeaderStyle BackColor="#33276A" />
                     </asp:GridView>
-                    <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" DeleteCommand="DELETE FROM &quot;SERVICIO&quot; WHERE &quot;IDSERVICIO&quot; = :IDSERVICIO" InsertCommand="INSERT INTO &quot;SERVICIO&quot; (&quot;IDSERVICIO&quot;, &quot;SE_NOMBRE&quot;, &quot;SE_VALOR&quot;, &quot;SE_INICIO&quot;, &quot;SE_TERMINO&quot;, &quot;SE_NOMBREPERFIL&quot;) VALUES (:IDSERVICIO, :SE_NOMBRE, :SE_VALOR, :SE_INICIO, :SE_TERMINO, :SE_NOMBREPERFIL)" ProviderName="<%$ ConnectionStrings:ConnectionString.ProviderName %>" SelectCommand="SELECT IDSERVICIO, SE_NOMBRE, SE_VALOR, to_char(SE_INICIO, 'HH:MI') AS EXPR1, to_char(SE_TERMINO, 'HH:MI') AS EXPR2, SE_NOMBREPERFIL FROM SERVICIO" UpdateCommand="UPDATE &quot;SERVICIO&quot; SET &quot;SE_NOMBRE&quot; = :SE_NOMBRE, &quot;SE_VALOR&quot; = :SE_VALOR, &quot;SE_INICIO&quot; = :SE_INICIO, &quot;SE_TERMINO&quot; = :SE_TERMINO, &quot;SE_NOMBREPERFIL&quot; = :SE_NOMBREPERFIL WHERE &quot;IDSERVICIO&quot; = :IDSERVICIO">
+                    <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" DeleteCommand="DELETE FROM &quot;SERVICIO&quot; WHERE &quot;IDSERVICIO&quot; = :IDSERVICIO" InsertCommand="INSERT INTO &quot;SERVICIO&quot; (&quot;IDSERVICIO&quot;, &quot;SE_NOMBRE&quot;, &quot;SE_VALOR&quot;, &quot;SE_INICIO&quot;, &quot;SE_TERMINO&quot;, &quot;SE_NOMBREPERFIL&quot;) VALUES (:IDSERVICIO, :SE_NOMBRE, :SE_VALOR, :SE_INICIO, :SE_TERMINO, :SE_NOMBREPERFIL)" ProviderName="<%$ ConnectionStrings:ConnectionString.ProviderName %>" SelectCommand="SELECT IDSERVICIO, SE_NOMBRE, to_char(SE_INICIO, 'HH:MI') AS EXPR1, to_char(SE_TERMINO, 'HH:MI') AS EXPR2 FROM SERVICIO" UpdateCommand="UPDATE &quot;SERVICIO&quot; SET &quot;SE_NOMBRE&quot; = :SE_NOMBRE, &quot;SE_INICIO&quot; = :SE_INICIO, &quot;SE_TERMINO&quot; = :SE_TERMINO,WHERE &quot;IDSERVICIO&quot; = :IDSERVICIO">
                         <DeleteParameters>
                             <asp:Parameter Name="IDSERVICIO" Type="Decimal" />
                         </DeleteParameters>
@@ -114,10 +112,8 @@
                         </InsertParameters>
                         <UpdateParameters>
                             <asp:Parameter Name="SE_NOMBRE" Type="String" />
-                            <asp:Parameter Name="SE_VALOR" Type="Decimal" />
                             <asp:Parameter Name="SE_INICIO" Type="DateTime" />
                             <asp:Parameter Name="SE_TERMINO" Type="DateTime" />
-                            <asp:Parameter Name="SE_NOMBREPERFIL" Type="String" />
                             <asp:Parameter Name="IDSERVICIO" Type="Decimal" />
                         </UpdateParameters>
                     </asp:SqlDataSource>

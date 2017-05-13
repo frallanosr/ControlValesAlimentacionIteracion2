@@ -36,9 +36,9 @@ namespace CapaVisualizacion
             int turno = Convert.ToInt32(this.DropDownList2.Text);
             int v_impreso = 0;
             int v_usado = 0;
+            int casino_idcasino = 1;
 
-
-            Vales v = new Vales(valorVale,nombrePerfil,v_impreso,v_usado,turno);
+            Vales v = new Vales(valorVale,nombrePerfil,v_impreso,v_usado,casino_idcasino, turno);
 
            ValesRepository vr = new ValesRepository();
 
