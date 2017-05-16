@@ -101,8 +101,10 @@
   <ItemGroup>
     <Content Include="agregaPerfil.aspx" />
     <Content Include="agregaServicio.aspx" />
+    <Content Include="agregaTurno.aspx" />
     <Content Include="agregaUsuario.aspx" />
     <Content Include="agregaVales.aspx" />
+    <Content Include="AsignaTurnos.aspx" />
     <Content Include="homeAdministrador.aspx" />
     <Content Include="IMG\logo_seta %281%29.png" />
     <Content Include="IMG\LOGO_SETA.jpg" />
@@ -145,6 +147,13 @@
     <Compile Include="agregaServicio.aspx.designer.cs">
       <DependentUpon>agregaServicio.aspx</DependentUpon>
     </Compile>
+    <Compile Include="agregaTurno.aspx.cs">
+      <DependentUpon>agregaTurno.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="agregaTurno.aspx.designer.cs">
+      <DependentUpon>agregaTurno.aspx</DependentUpon>
+    </Compile>
     <Compile Include="agregaUsuario.aspx.cs">
       <DependentUpon>agregaUsuario.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -158,6 +167,13 @@
     </Compile>
     <Compile Include="agregaVales.aspx.designer.cs">
       <DependentUpon>agregaVales.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AsignaTurnos.aspx.cs">
+      <DependentUpon>AsignaTurnos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AsignaTurnos.aspx.designer.cs">
+      <DependentUpon>AsignaTurnos.aspx</DependentUpon>
     </Compile>
     <Compile Include="homeAdministrador.aspx.cs">
       <DependentUpon>homeAdministrador.aspx</DependentUpon>

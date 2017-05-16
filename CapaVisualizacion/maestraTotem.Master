@@ -21,16 +21,29 @@
 </head>
 <body>
     <form id="form1" runat="server">
+        <center>
         <div style="border:1px black solid;">
-            <p>Bienvenido : </p>
+            <br>
+            <br>
+            <br>
+            <p>Bienvenido : <asp:Label ID="nombreUsuario" runat="server" Text="Label"></asp:Label></p>
+            <br>
+            <br>
+            <br>
         </div>
-    <div>
-        <div class="article">
+        </center>
+    <div style="border: 1px solid black;">
+        <center>
+        <div style="border: 1px solid red;">
+            <br>
+            <br>
             <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
         
             </asp:ContentPlaceHolder>
+            <br>
+            <br>
         </div>
-        
+        </center>
     </div>
     </form>
 </body>

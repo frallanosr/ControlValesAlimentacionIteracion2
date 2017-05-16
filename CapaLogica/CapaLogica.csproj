@@ -46,6 +46,7 @@
     <Compile Include="Perfil\Perfil.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Servicio\Servicio.cs" />
+    <Compile Include="Turno\Turno.cs" />
     <Compile Include="Usuario\Encripta.cs" />
     <Compile Include="Usuario\Usuario.cs" />
     <Compile Include="Vales\Vales.cs" />

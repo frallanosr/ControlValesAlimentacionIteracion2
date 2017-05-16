@@ -74,7 +74,7 @@ namespace CapaDatos.RepositoryUsuarios
             {
                 cn.Open();
                 OracleCommand command = cn.CreateCommand();
-                command.CommandText = "Select \"US_NOMBRE\"||' '||\"US_PATERNO\"as \"nombre\" from SISTEMA.USUARIO where \"RUT\" = '" + rut + "' ";
+                command.CommandText = "Select \"US_NOMBRE\"||' '||\"US_PATERNO\" as \"nombre\" from SISTEMA.USUARIO where \"RUT\" = '" + rut + "' ";
                 OracleDataReader reader = command.ExecuteReader();
                 if (!reader.HasRows)//si no tiene regitros
                 {
@@ -88,7 +88,30 @@ namespace CapaDatos.RepositoryUsuarios
             return nombreAdministrador;
 
         }
+        
+         public string nombreUsuario(string rut)
+        {
 
+            string nombreAdministrador = "";
+            using (OracleConnection cn = new OracleConnection(this.conexion))//crear conexion
+            {
+                cn.Open();
+                OracleCommand command = cn.CreateCommand();
+                command.CommandText = "Select \"US_NOMBRE\"||' '||\"US_PATERNO\"||' '||\"US_MATERNO\" as \"nombre\" from SISTEMA.USUARIO where \"RUT\" = '" + rut + "' ";
+                OracleDataReader reader = command.ExecuteReader();
+                if (!reader.HasRows)//si no tiene regitros
+                {
+                    return nombreAdministrador;
+                } while (reader.Read())//llenando la lista con objetos tipo usuario
+                {
+                    return nombreAdministrador = (string)reader["nombre"];
+                }
+                cn.Close();
+            }
+            return nombreAdministrador;
+
+        }
+        
         public void insertaUsuario(Usuario u)
         {
            using (OracleConnection cn = new OracleConnection(this.conexion))
