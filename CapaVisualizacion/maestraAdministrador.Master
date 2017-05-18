@@ -138,7 +138,7 @@
                 <span class="caret"></span></a>
                 <ul class="dropdown-menu">
                   <li><a href="agregaTurno.aspx">Agregar Turno</a></li>
-                    <li><a href="AsignaTurnos.aspx">Asigna Turnos</a></li>
+                    <%--<li><a href="AsignaTurnos.aspx">Asigna Turnos</a></li>--%>
                 </ul>
               </li>
             </ul>

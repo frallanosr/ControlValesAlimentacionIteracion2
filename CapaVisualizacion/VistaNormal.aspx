@@ -6,10 +6,23 @@
         <link href="css/bootstrap.min.css" rel="stylesheet">
         <link href="css/datepicker3.css" rel="stylesheet">
         <link href="css/styles.css" rel="stylesheet">
+
+        <style>
+          p{
+              size: 4px;
+          }
+          .inter{
+              width: 400px; 
+              height: 400px; 
+              /*border: 1px solid blue;*/
+              align-content: center;
+          }
+        </style>
+
         <div>
             <p>USTED TIENE:<asp:Label ID="cantidadVales" runat="server" Text="Label"></asp:Label> VALES DISPONIBLES</p>
         </div>
-        <div style="width: 400px; height: 400px; border: 1px solid blue;align-content: center;">
+        <div class="inter">
 
             <br>
             <br>
