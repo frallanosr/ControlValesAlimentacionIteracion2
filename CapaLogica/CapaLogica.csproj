@@ -34,6 +34,8 @@
     <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.OracleClient" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Drawing.Design" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -42,6 +44,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CrearTickets\CrearTicket.cs" />
     <Compile Include="PerfilServicio\PerfilServicio.cs" />
     <Compile Include="Perfil\Perfil.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

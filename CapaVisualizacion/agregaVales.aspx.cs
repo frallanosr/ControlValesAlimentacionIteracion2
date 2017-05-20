@@ -38,11 +38,13 @@ namespace CapaVisualizacion
             int v_usado = 0;
             int casino_idcasino = 1;
 
-            Vales v = new Vales(valorVale,nombrePerfil,v_impreso,v_usado,casino_idcasino, turno);
+           // Vales v = new Vales(valorVale,nombrePerfil,v_impreso,v_usado,casino_idcasino, turno);
 
            ValesRepository vr = new ValesRepository();
 
-           vr.insertaVales(v);
+           
+
+        //   vr.insertaVales(v);
 
             this.GridView1.DataBind();
         }

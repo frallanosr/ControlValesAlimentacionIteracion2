@@ -47,8 +47,10 @@
     <Compile Include="RepositoryPerfilServicio\PerfilServicioRepository.cs" />
     <Compile Include="RepositoryPerfil\PerfilRepository.cs" />
     <Compile Include="RepositoryServicio\ServicioRepository.cs" />
+    <Compile Include="RepositoryTicket\ImprimeTicket.cs" />
     <Compile Include="RepositoryTurno\TurnoRepository.cs" />
     <Compile Include="RepositoryUsuarios\UsuariosRepository.cs" />
+    <Compile Include="RepositoryUsuarioTurno\UsuarioTurnoRepository.cs" />
     <Compile Include="RepositoryVales\ValesRepository.cs" />
   </ItemGroup>
   <ItemGroup>

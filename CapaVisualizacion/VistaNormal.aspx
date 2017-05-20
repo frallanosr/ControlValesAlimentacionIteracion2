@@ -27,7 +27,7 @@
             <br>
             <br>
 
-            <asp:Button ID="Button1" runat="server" Text="IMPRIMIR" style="height: 130px; width: 360px; margin:2px;" class="btn btn-primary"
+            <asp:Button ID="Button1" runat="server" Text="IMPRIMIR" style="height: 130px; width: 360px; margin:2px;" class="btn btn-primary" OnClick="Button1_Click"
             />
             <br>
             <br>
