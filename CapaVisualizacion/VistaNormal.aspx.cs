@@ -16,6 +16,8 @@ namespace CapaVisualizacion
 {
     public partial class VistaNormal : System.Web.UI.Page
     {
+        ImprimeTicket imp = new ImprimeTicket();
+
         protected void Page_Load(object sender, EventArgs e)
         {
             this.cantidadVales.Text = Convert.ToString(2);
@@ -28,6 +30,14 @@ namespace CapaVisualizacion
         
         protected void Button1_Click(object sender, EventArgs e)
         {
+
+            string nameTurno = imp.extraeNombreDeTurnoPorRut(Convert.ToString(Session["rut_UsuarioNormal"]));
+            this.nombreTurno.Text = nameTurno;
+            int v = imp.idTurnoPorRut(Convert.ToString(Session["rut_UsuarioNormal"]));
+            this.Label1.Text = v.ToString();
+
+            this.Label2.Text = imp.horaInicio(Convert.ToString(Session["rut_UsuarioNormal"]));
+            this.Label3.Text = imp.horaFin(Convert.ToString(Session["rut_UsuarioNormal"]));
 
             //if (Session["rut_UsuarioNormal"] == null)
             //{
@@ -92,9 +102,9 @@ namespace CapaVisualizacion
 
             //    Response.Redirect("logout.aspx");
 
-           // }
+            // }
 
-           
+
         }
     }
 }

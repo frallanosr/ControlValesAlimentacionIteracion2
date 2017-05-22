@@ -20,8 +20,12 @@
         </style>
 
         <div>
-            <p>USTED TIENE:<asp:Label ID="cantidadVales" runat="server" Text="Label"></asp:Label> VALES DISPONIBLES</p>
+            <p>USTED TIENE:<asp:Label ID="cantidadVales" runat="server" Text="Label"></asp:Label> VALES DISPONIBLES</p> <p><asp:Label ID="nombreTurno" runat="server" Text="asdfg"></asp:Label></p>
+            <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
+            <asp:Label ID="Label2" runat="server" Text="Label"></asp:Label>
+            <asp:Label ID="Label3" runat="server" Text="Label"></asp:Label>
         </div>
+        
         <div class="inter">
 
             <br>
