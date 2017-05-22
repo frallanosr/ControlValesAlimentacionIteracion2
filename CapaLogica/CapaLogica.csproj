@@ -45,6 +45,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CrearTickets\CrearTicket.cs" />
+    <Compile Include="Login\FormatoRut.cs" />
     <Compile Include="PerfilServicio\PerfilServicio.cs" />
     <Compile Include="Perfil\Perfil.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

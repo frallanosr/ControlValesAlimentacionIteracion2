@@ -33,14 +33,14 @@
                                 
                                 <div class="form-group ">
                                     <asp:TextBox ID="rut" name="rut" placeholder="Rut" class="input_rut form-control col-lg-4" onfocus="lastfocus = this;" autofocus="autofocus" runat="server"></asp:TextBox>
-                                    
+                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="RequiredFieldValidator" ControlToValidate="rut" Display="Dynamic" ForeColor="Red" ValidationGroup="btn">EL RUT ES REQUERIDO</asp:RequiredFieldValidator>
                                 </div>
                                 <div class="form-group">
                                     <center>
                                     <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
                                         </center>
                                     <asp:TextBox ID="pass" name="pass" runat="server" class="form-control" placeholder="Contraseña" type="password" onfocus="lastfocus = this;"></asp:TextBox>
-                                    <%-- <input class="form-control" placeholder="Contraeña" name="password" type="password" onfocus="lastfocus = this;">--%>
+                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ErrorMessage="RequiredFieldValidator" ControlToValidate="pass" Display="Dynamic" ForeColor="Red" ValidationGroup="btn">LA CONTRASEÑA ES REQUERIDA</asp:RequiredFieldValidator>
                                 </div>
                                 <div style="align-items: center">
 
@@ -88,7 +88,7 @@
                                     </table>
 
                                     <div align="center" style="padding-top: 10px">
-                                        <asp:Button ID="Button1" runat="server" Text="INGRESAR" style="height: 45px; width: 120px; border:groove;" CssClass="btn btn-group-lg" OnClick="Button1_Click" />
+                                        <asp:Button ID="Button1" runat="server" Text="INGRESAR" style="height: 45px; width: 120px; border:groove;" CssClass="btn btn-group-lg" OnClick="Button1_Click" ValidationGroup="btn" />
                                     </div>
 
 
