@@ -31,8 +31,8 @@ namespace CapaDatos.RepositoryUsuarioTurno
                     return idTurno;
                 } while (reader.Read())//llenando la lista con objetos tipo usuario
                 {
-                    return idTurno = (int)reader["TURNO_IDTURNO"];
-                }
+                    return idTurno = Convert.ToInt32(reader["TURNO_IDTURNO"]);
+             }
                 cn.Close();
             }
             return idTurno;

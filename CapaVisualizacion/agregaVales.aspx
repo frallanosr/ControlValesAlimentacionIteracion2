@@ -10,10 +10,7 @@
 
         <style type="text/css">
             #contenedor {
-                border-left-style: solid;
-                border-right-style: solid;
-                border-top-style: solid;
-                border-bottom-style: solid;
+           
                 width: 75%;
                 height: 55%;
             }
@@ -27,9 +24,14 @@
                     </div>
                     <div>
                         <center>
-                            <h2>Agregar Vales</h2>
+                            <h2>Definir Vales</h2>
                             <table border="0" style="align-content:center;">
-
+                                <tr>
+                                    <td>
+                                        <asp:TextBox ID="rut_empleado" runat="server" placeholder="Ej:11-111-111-k"></asp:TextBox>
+                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ErrorMessage="El Rut Es Requerido"></asp:RequiredFieldValidator>
+                                    </td>
+                                </tr>
                                 <tr>
                                     <td>
                                         <br />
@@ -57,6 +59,14 @@
                                         <asp:SqlDataSource runat="server" ID="SqlDataSource1" ConnectionString='<%$ ConnectionStrings:ConnectionString %>' ProviderName='<%$ ConnectionStrings:ConnectionString.ProviderName %>'
                                             SelectCommand='SELECT "T_NOMBRE", "IDTURNO" FROM "TURNO"'></asp:SqlDataSource>
                                     </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <br />
+                                         <asp:TextBox ID="cantidad" runat="server" TextMode="Number" CssClass="form-control" placeholder="Cantidad"></asp:TextBox>
+                                           <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="Cantidad de vales es requerido" Display="Dynamic"
+                                            ControlToValidate="valorVale" CssClass="alert-danger" ValidationGroup="btn"></asp:RequiredFieldValidator>
+                                         </td>
                                 </tr>
                                 <tr>
                                     <td>
@@ -91,10 +101,10 @@
 
                         </center>
                     </div>
-                    <asp:GridView ID="GridView1" runat="server" DataSourceID="SqlDataSource3" AutoGenerateColumns="False" BackColor="White" BorderColor="#3366CC" BorderStyle="None" BorderWidth="1px" CellPadding="4">
+                    <asp:GridView ID="GridView1" runat="server" DataSourceID="SqlDataSource3" CssClass="table" AutoGenerateColumns="False" BackColor="White" BorderColor="#3366CC" BorderStyle="None" BorderWidth="1px" CellPadding="4" DataKeyNames="IDVALE">
                         <Columns>
-                            <asp:BoundField DataField="EXPR1" HeaderText="EXPR1" SortExpression="EXPR1" />
-                            <asp:BoundField DataField="T_NOMBRE" HeaderText="T_NOMBRE" SortExpression="T_NOMBRE" />
+                            <asp:BoundField DataField="IDVALE" HeaderText="N° Vale" SortExpression="IDVALE" ReadOnly="True" />
+                            <asp:BoundField DataField="V_VALOR" HeaderText="VALOR" SortExpression="V_VALOR" />
                         </Columns>
                         <FooterStyle BackColor="#99CCCC" ForeColor="#003399" />
                         <HeaderStyle BackColor="#003399" Font-Bold="True" ForeColor="#CCCCFF" />
@@ -106,7 +116,8 @@
                         <SortedDescendingCellStyle BackColor="#D6DFDF" />
                         <SortedDescendingHeaderStyle BackColor="#002876" />
                     </asp:GridView>
-                    <asp:SqlDataSource ID="SqlDataSource3" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" ProviderName="<%$ ConnectionStrings:ConnectionString.ProviderName %>" SelectCommand="SELECT TO_CHAR(VALE.V_VALOR, '$999999') AS EXPR1, TURNO.T_NOMBRE FROM VALE, TURNO WHERE VALE.TURNO_IDTURNO = TURNO.IDTURNO"></asp:SqlDataSource>
+                    <asp:SqlDataSource ID="SqlDataSource3" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" ProviderName="<%$ ConnectionStrings:ConnectionString.ProviderName %>" SelectCommand="SELECT &quot;IDVALE&quot;, &quot;V_VALOR&quot; FROM &quot;VALE&quot; WHERE USUARIO_TURNO_USUARIO_RUT = '184155842'
+"></asp:SqlDataSource>
                     <br />
 
                     <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" ProviderName="<%$ ConnectionStrings:ConnectionString.ProviderName %>"

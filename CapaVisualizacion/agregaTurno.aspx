@@ -6,6 +6,8 @@
     <asp:TextBox ID="nombreDelTurno" required="true" runat="server" CssClass="form-control" placeholder="Nombre del Turno" ></asp:TextBox>   
     <asp:TextBox ID="horaInicio" runat="server" TextMode="Time" CssClass="form-control"></asp:TextBox>
     <asp:TextBox ID="horaFin" runat="server" TextMode="Time" CssClass="form-control"></asp:TextBox>
+
+    <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="Agregar" CssClass="btn btn-danger"  />
     
 </form>
 </asp:Content>

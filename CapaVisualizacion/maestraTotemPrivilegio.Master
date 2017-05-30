@@ -1,4 +1,4 @@
-﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="maestraTotem.master.cs" Inherits="CapaVisualizacion.maestraTotem" %>
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="maestraTotemPrivilegio.master.cs" Inherits="CapaVisualizacion.maestraTotemPrivilegio" %>
 
 <!DOCTYPE html>
 
@@ -22,7 +22,7 @@
 <body>
     <form id="form1" runat="server">
         <center>
-        <div <%--style="border:1px black solid;"--%>>
+        <div style="border:1px black solid;">
             <br>
             <br>
             <br>
@@ -32,9 +32,9 @@
             <br>--%>
         </div>
         </center>
-    <div<%-- style="border: 1px solid black;"--%>>
+    <div style="border: 1px solid black;">
         <center>
-        <div <%--style="border: 1px solid red;"--%>>
+        <div style="border: 1px solid red;">
             <br>
             <br>
             <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">

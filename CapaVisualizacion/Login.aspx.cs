@@ -60,7 +60,7 @@ namespace CapaVisualizacion
                         this.Label1.Visible = true;
                         Label1.Text = "CAJERO";
                     }
-                    else if (lista.privilegio(rutSinPniG, contraEncriptada) == "funcionario")
+                    else if (lista.privilegio(rutSinPniG, contraEncriptada) == "normal")
                     {
                         Session.Add("rut_UsuarioNormal", rutSinPniG);
                         Response.Redirect("VistaNormal.aspx");
@@ -69,8 +69,10 @@ namespace CapaVisualizacion
                     }
                     else if (lista.privilegio(rutSinPniG, contraEncriptada) == "conPrivilegios")
                     {
+                        
+                         Session.Add("rut_conPrivilegios", rutSinPniG);
                         this.Label1.Visible = true;
-                        Label1.Text = "CON PRIVILEGIOS (Sercretari@,Jefe)";
+                        Response.Redirect("vistaConPrivilegio.aspx");
                     }
                     else
                     {

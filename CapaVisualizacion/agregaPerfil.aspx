@@ -11,10 +11,6 @@
         <style type="text/css">
             #contenedor {
 
-                border-left-style: solid;
-                border-right-style: solid;
-                border-top-style: solid;
-                border-bottom-style: solid;
                 width: 75%;
                 height: 55%;
             }
@@ -42,7 +38,7 @@
                                         <br />
                                         <!--CODIGO COMBOBOX DROPDOWNLIST-->
                                         <asp:DropDownList ID="DropDownList1" runat="server" CssClass="btn btn-secondary dropdown-toggle">
-                                            <asp:ListItem Selected="True" Value="0" CssClass="form-control">- Tipo Usuario -</asp:ListItem>
+                                            <asp:ListItem Selected="True" Value="0" CssClass="form-control">Seleccione Tipo Usuario </asp:ListItem>
                                             <asp:ListItem Value="normal">Normal</asp:ListItem>
                                             <asp:ListItem Value="conPrivilegios">Con Privilegios</asp:ListItem>
                                             <asp:ListItem Value="cajero">Cajero</asp:ListItem>

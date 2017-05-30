@@ -6,6 +6,6 @@
     <br />
     <p><code></code></p>
        <center>
-			<p style="font-size:25px;" class="label label-primary">Bienvenido al sistema de administracion</p>
+			<p style="font-size:25px;" class="label label-primary">Bienvenido Administrador</p>
          </center>
 </asp:Content>

@@ -14,9 +14,9 @@
 
         <title>Inicio de Sesión</title>
 
-        <link href="css/bootstrap.min.css" rel="stylesheet">
-        <link href="css/datepicker3.css" rel="stylesheet">
-        <link href="css/styles.css" rel="stylesheet">
+        <link href="css/bootstrap.min.css" rel="stylesheet"/>
+        <link href="css/datepicker3.css" rel="stylesheet"/>
+        <link href="css/styles.css" rel="stylesheet"/>
     </head>
 
     <body>
@@ -27,7 +27,7 @@
                     <div class="panel-heading"></div>
                     <div class="panel-body">
                         <form role="form" id="multiple-events">
-                            <fieldset>
+                            
                                 
                                     <%--<legend>Acceso&nbsp;&nbsp;&nbsp;</legend>--%>
                                 
@@ -82,18 +82,15 @@
                                                 <input type="reset" value="DEL" name="DEL" id="boton" style="height: 60px; width: 60px ; margin:2px;" class="btn btn-primary"></td>
 
                                         </tr>
-
-
-
                                     </table>
 
                                     <div align="center" style="padding-top: 10px">
-                                        <asp:Button ID="Button1" runat="server" Text="INGRESAR" style="height: 45px; width: 120px; border:groove;" CssClass="btn btn-group-lg" OnClick="Button1_Click" ValidationGroup="btn" />
+                                        <asp:Button ID="Button1" runat="server" Text="INGRESAR" style="height: 45px; width: 120px; border:groove; font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif" CssClass="btn btn-group-lg" OnClick="Button1_Click" ValidationGroup="btn" />
                                     </div>
 
 
                                 </div>
-                            </fieldset>
+                          
                     </div>
                 </div>
             </div>
@@ -122,19 +119,4 @@
     </body>
 
     </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 </asp:Content>
