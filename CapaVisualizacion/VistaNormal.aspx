@@ -3,6 +3,14 @@
     </asp:Content>
     <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
+        <script type="text/javascript">
+            var int = self.setInterval("refresh()", 3000);
+    function refresh()
+    {
+        location.reload(true);
+    }
+</script>
+
         <link href="css/bootstrap.min.css" rel="stylesheet">
         <link href="css/datepicker3.css" rel="stylesheet">
         <link href="css/styles.css" rel="stylesheet">
@@ -30,6 +38,7 @@
 
             <asp:Button ID="Button1" runat="server" Text="IMPRIMIR" style="height: 130px; width: 360px; margin:2px;" class="btn btn-primary" OnClick="Button1_Click"
             />
+            <asp:Button ID="Button3" runat="server" OnClick="Button3_Click" style="height: 130px; width: 360px; margin:2px;" class="btn btn-primary" Text="IMPRIMIR VALE ESPECIAL" />
             <br>
             <br>
             <br>

@@ -61,7 +61,27 @@ namespace CapaDatos.RepositoryTicket
             return valor;
 
         }
+        public decimal valorServicioEspecial(int id)
+        {
+            decimal valor = 0;
+            using (OracleConnection cn = new OracleConnection(this.conexion))//crear conexion
+            {
+                cn.Open();
+                OracleCommand command = cn.CreateCommand();
+                command.CommandText = " select \"PE_VALOR\" from \"SISTEMA\".\"PERFIL_SERVICIO\"WHERE  \"SERVICIO_IDSERVICIO\" = '" + id + "'";
+                OracleDataReader reader = command.ExecuteReader();
+                if (!reader.HasRows)//si no tiene regitros
+                {
+                    return valor;
+                } while (reader.Read())//llenando la lista con objetos tipo usuario
+                {
+                    return valor = (decimal)reader["PE_VALOR"];
+                }
+                cn.Close();
+            }
+            return valor;
 
+        }
         public string extraeNombreDeTurnoPorRut(string rut) {
 
             string nombret = "";
@@ -213,6 +233,50 @@ namespace CapaDatos.RepositoryTicket
                 cn.Close();
             }
             return valor;
+        }
+
+         public int consultaIdServicioEspecial(int idTurno) {
+
+            int idServicio = 0;
+            using (OracleConnection cn = new OracleConnection(this.conexion))//crear conexion
+            {
+                cn.Open();
+                OracleCommand command = cn.CreateCommand();
+                command.CommandText = "SELECT \"t\".\"SERVICIO_IDSERVICIO\" AS \"ID\" FROM \"SISTEMA\".\"TURNO_SERVICIO\" \"t\" join \"SISTEMA\".\"SERVICIO\" \"s\" ON (\"t\".\"SERVICIO_IDSERVICIO\" = \"s\".\"IDSERVICIO\")WHERE \"TURNO_IDTURNO\" = '"+idTurno+"' ";
+                OracleDataReader reader = command.ExecuteReader();
+                if (!reader.HasRows)
+                {
+                    return idServicio;
+                } while (reader.Read())
+                {
+                    return idServicio = Convert.ToInt32(reader["ID"]);
+                }
+                cn.Close();
+            }
+            return idServicio;
+        }
+
+        
+        public bool consultaSiExisteVale(int idturno,string rut){
+            bool existe = false;
+            using (OracleConnection cn = new OracleConnection(this.conexion))//crear conexion
+            {
+                cn.Open();
+                OracleCommand command = cn.CreateCommand();
+                command.CommandText = "select \"USUARIO_TURNO_USUARIO_RUT\" from \"SISTEMA\".\"VALE\" where to_char(\"V_FECHA_ESPECIAL\", 'HH24:MM:SS') between TO_CHAR((SELECT \"horaIni\"('"+idturno+"') FROM \"DUAL\"),'HH24:MM:SS') and TO_CHAR((SELECT \"horaFin\"('"+idturno+"')FROM \"DUAL\"),'HH24:MM:SS')AND \"USUARIO_TURNO_USUARIO_RUT\"='"+rut+"' AND TO_CHAR(\"V_FECHA_ESPECIAL\",'YYYY-MM-DD') = TO_CHAR(SYSDATE,'YYYY-MM-DD')";
+                OracleDataReader reader = command.ExecuteReader();
+                if (!reader.HasRows)//si no tiene regitros
+                {
+                    return existe=false;
+                } while (reader.Read())//llenando la lista con objetos tipo usuario
+                {
+                    return existe =true;
+                }
+                cn.Close();
+            }
+            return existe
+            ;
+
         }
     }
 }

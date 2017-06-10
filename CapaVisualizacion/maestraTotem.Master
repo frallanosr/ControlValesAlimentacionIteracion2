@@ -26,7 +26,7 @@
             <br>
             <br>
             <br>
-            <p>Bienvenido : <asp:Label ID="nombreUsuario" runat="server" Text="Label"></asp:Label></p>
+            <p style="font-size:25px;" class="label label-primary">Bienvenido : <asp:Label ID="nombreUsuario" runat="server" Text="Label"></asp:Label></p>
             <br>
             <%--<br>
             <br>--%>

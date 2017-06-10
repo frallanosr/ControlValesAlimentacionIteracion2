@@ -124,6 +124,7 @@
                 <a class="dropdown-toggle" data-toggle="dropdown" href="#">Vales<span class="caret"></span></a>
                 <ul class="dropdown-menu">
                   <li><a href="agregaVales.aspx">Definir Vales</a></li>
+                    <li><a href="agregaValesVisita.aspx">Definir Vales Visita</a></li>
                 </ul>
               </li>
 

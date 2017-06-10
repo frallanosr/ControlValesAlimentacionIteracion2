@@ -15,7 +15,7 @@ namespace CapaVisualizacion
     {
         UsuariosRepository usu = new UsuariosRepository();
 
-        private Usuario u;
+        
       
         protected void Page_Load(object sender, EventArgs e)
         {

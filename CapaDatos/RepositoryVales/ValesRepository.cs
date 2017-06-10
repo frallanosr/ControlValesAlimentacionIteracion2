@@ -11,7 +11,7 @@ namespace CapaDatos.RepositoryVales
 {
     public class ValesRepository
     {
-         private string conexion;
+        private string conexion;
 
         public ValesRepository()
         {
@@ -24,7 +24,7 @@ namespace CapaDatos.RepositoryVales
         //    int idVale = 0;
         //    using (OracleConnection cn = new OracleConnection(this.conexion))//crear conexion
         //    {
-    
+
 
         //cn.Open();
         //        OracleCommand command = cn.CreateCommand();
@@ -43,20 +43,33 @@ namespace CapaDatos.RepositoryVales
         //}
 
 
-        public void insertaVales(Vales v)
+        public void insertaValesEspeciales(ValesEspeciales v)
         {
-           using (OracleConnection cn = new OracleConnection(this.conexion))
+            using (OracleConnection cn = new OracleConnection(this.conexion))
             {
-               OracleCommand cmd = new OracleCommand();
-               cmd.Connection = cn;
-            cmd.CommandText = "INSERT INTO \"SISTEMA\".\"VALE\" (\"IDVALE\", \"V_VALOR\", \"V_IMPRESO\", \"V_USADO\",\"V_NORMAL\", \"CASINO_IDCASINO\",\"USUARIO_TURNO_USUARIO_RUT\",\"USUARIO_TURNO_TURNO_IDTURNO\") VALUES (v_sequence.nextval, '" + v.valor+"', '"+v.v_impreso+"', '"+v.v_usado+"','"+v.v_normal+"', '"+v.casino_idcasino+"','"+v.rut_usuario+"','"+v.turno_idturno+"')";
+                OracleCommand cmd = new OracleCommand();
+                cmd.Connection = cn;
+                cmd.CommandText = "INSERT INTO \"SISTEMA\".\"VALE\" (\"IDVALE\", \"V_VALOR\", \"V_IMPRESO\", \"V_USADO\",\"V_NORMAL\", \"CASINO_IDCASINO\",\"USUARIO_TURNO_USUARIO_RUT\",\"USUARIO_TURNO_TURNO_IDTURNO\",\"V_FECHA_ESPECIAL\",\"V_CANTIDAD\") VALUES (v_sequence.nextval, '" + v.valor + "', '" + v.v_impreso + "', '" + v.v_usado + "','" + v.v_normal + "', '" + v.casino_idcasino + "','" + v.rut_usuario + "','" + v.turno_idturno + "',TO_DATE('" + v.v_fecha_especial + "', 'DD/MM/YYYY HH24:MI:SS'),'" + v.v_cantidad + "')";
 
-          cn.Open();
-            cmd.ExecuteNonQuery();
-              cn.Close();
-          }
+                cn.Open();
+                cmd.ExecuteNonQuery();
+                cn.Close();
+            }
         }
 
+        public void insertaVales(Vales v)
+        {
+            using (OracleConnection cn = new OracleConnection(this.conexion))
+            {
+                OracleCommand cmd = new OracleCommand();
+                cmd.Connection = cn;
+                cmd.CommandText = "INSERT INTO \"SISTEMA\".\"VALE\" (\"IDVALE\", \"V_VALOR\", \"V_IMPRESO\", \"V_USADO\",\"V_NORMAL\", \"CASINO_IDCASINO\",\"USUARIO_TURNO_USUARIO_RUT\",\"USUARIO_TURNO_TURNO_IDTURNO\") VALUES (v_sequence.nextval, '" + v.valor + "', '" + v.v_impreso + "', '" + v.v_usado + "','" + v.v_normal + "', '" + v.casino_idcasino + "','" + v.rut_usuario + "','" + v.turno_idturno + "')";
+
+                cn.Open();
+                cmd.ExecuteNonQuery();
+                cn.Close();
+            }
+        }
         //public DataTable GetHeader_BySproc(string unit, string office, string receiptno)
         //{
         //    using (OracleConnection cn = new OracleConnection(DatabaseHelper.GetConnectionString()))
@@ -86,7 +99,7 @@ namespace CapaDatos.RepositoryVales
             {
                 cn.Open();
                 OracleCommand command = cn.CreateCommand();
-                command.CommandText = "SELECT MAX(\"IDVALE\")AS \"ID\" FROM \"SISTEMA\".\"VALE\" WHERE \"USUARIO_TURNO_USUARIO_RUT\" = '"+rut+"'";
+                command.CommandText = "SELECT MAX(\"IDVALE\")AS \"ID\" FROM \"SISTEMA\".\"VALE\" WHERE \"USUARIO_TURNO_USUARIO_RUT\" = '" + rut + "'";
                 OracleDataReader reader = command.ExecuteReader();
                 if (!reader.HasRows)//si no tiene regitros
                 {
@@ -101,7 +114,75 @@ namespace CapaDatos.RepositoryVales
 
         }
 
+        public int valorPerfilEspecial(int turno)
+        {
+            int v = 0;
+            using (OracleConnection cn = new OracleConnection(this.conexion))//crear conexion
+            {
+                cn.Open();
+                OracleCommand command = cn.CreateCommand();
+                command.CommandText = "SELECT \"PE_VALOR\" FROM \"SISTEMA\".\"PERFIL_SERVICIO\" WHERE \"SERVICIO_IDSERVICIO\" = (select \"SERVICIO_IDSERVICIO\" from \"SISTEMA\".\"TURNO_SERVICIO\" WHERE \"TURNO_IDTURNO\" = '" + turno + "')";
+                OracleDataReader reader = command.ExecuteReader();
+                if (!reader.HasRows)//si no tiene regitros
+                {
+                    return v;
+                } while (reader.Read())//llenando la lista con objetos tipo usuario
+                {
+                    return v = Convert.ToInt32(reader["PE_VALOR"]);
+                }
+                cn.Close();
+            }
+            return v;
 
+        }
+        public int extraeNumeroDeValesEspeciales(string rut)
+        {
+            int id = 0;
+            using (OracleConnection cn = new OracleConnection(this.conexion))//crear conexion
+            {
+                cn.Open();
+                OracleCommand command = cn.CreateCommand();
+                command.CommandText = "SELECT \"V_CANTIDAD\" as \"cant\" from \"SISTEMA\".\"VALE\" where \"V_IMPRESO\" = 0 and \"USUARIO_TURNO_USUARIO_RUT\" = '" + rut + "' AND TO_CHAR(\"V_FECHA_ESPECIAL\",'DD') = TO_CHAR(SYSDATE,'DD')";
+                OracleDataReader reader = command.ExecuteReader();
+                if (!reader.HasRows)//si no tiene regitros
+                {
+                    return id;
+                } while (reader.Read())//llenando la lista con objetos tipo usuario
+                {
+                    return id = Convert.ToInt32(reader["cant"]);
+                }
+                cn.Close();
+            }
+            return id;
 
+        }
+
+        public void cambiaNumeroValesEspeciales(int numero, string rut)
+        {
+            using (OracleConnection cn = new OracleConnection(this.conexion))
+            {
+                OracleCommand cmd = new OracleCommand();
+                cmd.Connection = cn;
+                cmd.CommandText = "UPDATE \"SISTEMA\".\"VALE\" SET \"V_CANTIDAD\"='" + numero + "' where \"USUARIO_TURNO_USUARIO_RUT\" = '" + rut + "' AND TO_CHAR(\"V_FECHA_ESPECIAL\",'DD') = TO_CHAR(SYSDATE,'DD') and \"V_IMPRESO\" = 0 ";
+
+                cn.Open();
+                cmd.ExecuteNonQuery();
+                cn.Close();
+            }
+        }
+
+        public void actualizaVariableImpreso(string rut)
+        {
+            using (OracleConnection cn = new OracleConnection(this.conexion))
+            {
+                OracleCommand cmd = new OracleCommand();
+                cmd.Connection = cn;
+                cmd.CommandText = "UPDATE \"SISTEMA\".\"VALE\" SET \"V_IMPRESO\"='" + 1 + "' where \"USUARIO_TURNO_USUARIO_RUT\" = '" + rut + "' AND TO_CHAR(\"V_FECHA_ESPECIAL\",'DD') = TO_CHAR(SYSDATE,'DD') and \"V_IMPRESO\" = 0 ";
+
+                cn.Open();
+                cmd.ExecuteNonQuery();
+                cn.Close();
+            }
+        }
     }
 }

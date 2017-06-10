@@ -13,7 +13,7 @@ namespace CapaVisualizacion
     {
         UsuariosRepository usu = new UsuariosRepository();
 
-        private Usuario u;
+        
         public String rut = null;
         protected void Page_Load(object sender, EventArgs e)
         {

@@ -8,6 +8,9 @@ using CapaLogica.Vales;
 using CapaDatos.RepositoryVales;
 using CrearTicketVenta;
 using CapaDatos.RepositoryTicket;
+using CapaLogica.Login;
+using CapaDatos.RepositoryUsuarios;
+
 
 namespace CapaVisualizacion
 {
@@ -33,87 +36,94 @@ namespace CapaVisualizacion
 
         protected void Btn1_Click(object sender, EventArgs e)
         {
-            string nombrePerfil = this.DropDownList3.Text;
-            int valorVale = Convert.ToInt32(this.valorVale.Text);
-            int turno = Convert.ToInt32(this.DropDownList2.Text);
-            int cant = Convert.ToInt32(this.cantidad.Text);
-            
+      
+            /*genera la clase para validar el rut */
+            FormatoRut vali = new FormatoRut();
+
+            UsuariosRepository usu = new UsuariosRepository();
+
+            DateTime fecha_nac = Convert.ToDateTime(fechatxt.Text);
+            int result = DateTime.Compare(fecha_nac, DateTime.Today);
+
+            /*extrae el rut del formulario */
+            string rut = this.rut_empleado.Text;
+            /*elimina puntos y guiones */
+            string rutSinPniG = rut.Replace(".","").Replace("-","");
+            /* valida el rut*/
+            bool validacion = vali.validarRut(rutSinPniG);
+            /*se pregunta si la validacion es exitosa o no  */
+            if (validacion != true)
+            {
+                Response.Write("<script>alert('RUT INVALIDO!!')</script>");
+            }
+            else if (usu.verificaSiExisteUsuario(rutSinPniG) != true)
+            {
+                Response.Write("<script>alert('EL USUARIO NO EXISTE!!')</script>");
+                this.rut_empleado.Text = "";
+                this.cantidad.Text = "";
+                this.fechatxt.Text = "";
+            }
+            else if (result < 0)
+            {
+                Response.Write("<script>alert('LA FECHA DEBE SER MAYOR O IGUAL A LA ACTUAL!!')</script>");
+                this.fechatxt.Text = "";
+            }
+            else if (result == 0)
+            {
+                ImprimeTicket ipt = new ImprimeTicket();
+
+                /* crea variable para acceder a los metodos */
+                ValesRepository va = new ValesRepository();
+                /*el turno es el especial por eso es fijo */
+                int turno = ipt.idTurnoPorRut(rutSinPniG);
+
+                /*extrae valor de la bdd dependiendo del turno que en este caso el fijo */
+                int valorVale = va.valorPerfilEspecial(4);
+                /*extrae la cantidad de vales al imprimir */
+                int cant = Convert.ToInt32(this.cantidad.Text);
+                /*extrae la fecha a la que se va a asignar el vale */
+                DateTime fechaAsig = Convert.ToDateTime(this.fechatxt.Text);
+
+
+                /*genera la clase para ser llenada */
+                ValesEspeciales v = new ValesEspeciales(valorVale, 0, 0, 1, 1, rutSinPniG, turno, fechaAsig, cant);
+
+                ValesRepository vr = new ValesRepository();
+
+                vr.insertaValesEspeciales(v);
+                Response.Write("<script>alert('VALE GENERADO CON EXITO')</script>");
+            }
+            else
+            {
+                     ImprimeTicket ipt = new ImprimeTicket();
+
+                /* crea variable para acceder a los metodos */
+                ValesRepository va = new ValesRepository();
+                /*el turno es el especial por eso es fijo */
+                int turno = ipt.idTurnoPorRut(rutSinPniG);
+
+                /*extrae valor de la bdd dependiendo del turno que en este caso el fijo */
+                int valorVale = va.valorPerfilEspecial(4);
+                /*extrae la cantidad de vales al imprimir */
+                int cant = Convert.ToInt32(this.cantidad.Text);
+                /*extrae la fecha a la que se va a asignar el vale */
+                DateTime fechaAsig = Convert.ToDateTime(this.fechatxt.Text);
+
+
+                /*genera la clase para ser llenada */
+                ValesEspeciales v = new ValesEspeciales(valorVale, 0, 0, 1, 1, rutSinPniG, turno, fechaAsig, cant);
+
+                ValesRepository vr = new ValesRepository();
+
+                vr.insertaValesEspeciales(v);
+                Response.Write("<script>alert('VALE GENERADO CON EXITO')</script>");
+
+            }
 
 
 
-            Vales v = new Vales(valorVale, 1, 0, 1, 1, Convert.ToString(Session["rut_administrador"]),1);
-            // Vales v = new Vales(valorVale,nombrePerfil,v_impreso,v_usado,casino_idcasino, turno);
-
-            ValesRepository vr = new ValesRepository();
-
-
-
-            vr.insertaVales(v);
-
-            this.GridView1.DataBind();
-
-
-            //Creamos una instancia d ela clase CrearTicket
-            CrearTicket ticket = new CrearTicket();
-            //Ya podemos usar todos sus metodos
-            ticket.AbreCajon();//Para abrir el cajon de dinero.
-
-            //De aqui en adelante pueden formar su ticket a su gusto... Les muestro un ejemplo
-
-            //Datos de la cabecera del Ticket.
-            ticket.TextoCentro("SETA");
-            ticket.TextoIzquierda("EXPEDIDO EN: Casino N° ###");
-            ticket.lineasAsteriscos();
-
-            //Sub cabecera.
-            ticket.TextoIzquierda("");
-            ticket.TextoIzquierda("Tipo de Perfil: " + nombrePerfil + " ");
-            ticket.TextoIzquierda("");
-            ticket.TextoExtremos("FECHA: " + DateTime.Now.ToShortDateString(), "HORA: " + DateTime.Now.ToShortTimeString());
-            ticket.lineasAsteriscos();
-
-            //Articulos a vender.
-            ticket.EncabezadoVenta();//NOMBRE DEL ARTICULO, CANT, PRECIO, IMPORTE
-            ticket.lineasAsteriscos();
-            //Si tiene una DataGridView donde estan sus articulos a vender pueden usar esta manera para agregarlos al ticket.
-            //foreach (DataGridViewRow fila in dgvLista.Rows)//dgvLista es el nombre del datagridview
-            //{
-            //ticket.AgregaArticulo(fila.Cells[2].Value.ToString(), int.Parse(fila.Cells[5].Value.ToString()),
-            //decimal.Parse(fila.Cells[4].Value.ToString()), decimal.Parse(fila.Cells[6].Value.ToString()));
-            //}
-            ImprimeTicket t = new ImprimeTicket();
-
-
-
-            ////extrae el id del turno
-            //int idTurno = imp.idTurnoPorRut(Convert.ToString(Session["rut_UsuarioNormal"]));
-            ////mediante el id del turno y la hora actual se obtiene el id del servicio
-            //int idServ = Convert.ToInt32(imp.consultaIdServicio(idTurno));
-            ////mediante el id del servicio se obtiene el nombre de este
-            //string nombreServicio = t.NombreServicioPorId(idServ);
-            ////mediante el rut se extrae el id del perfil del usuario
-            //int idPerfil = imp.extraeIdPerfilPorRut(Convert.ToString(Session["rut_UsuarioNormal"]));
-            ////mediante el id del servicio se obtiene el valor de este 
-            //decimal value = t.valorServicio(idPerfil, idServ);
-            string g = "Personalizado";
-            int vTot = cant * valorVale;
-            ticket.AgregaArticulo(g, cant, vTot);
-            ticket.lineasIgual();
-
-            //Resumen de la venta. Sólo son ejemplos
-
-            //Texto final del Ticket.
-            ticket.lineasAsteriscos();
-
-            ValesRepository vl = new ValesRepository();
-            string rutNormal = Session["rut_administrador"].ToString();
-            ticket.TextoCentro("Numero de Vale: " + vl.extraUltimoIdVale(rutNormal).ToString());
-
-            ticket.lineasAsteriscos();
-            ticket.TextoIzquierda("");
-            ticket.TextoCentro("¡Complete su pedido en caja!");
-            ticket.CortaTicket();
-            ticket.ImprimirTicket("Microsoft XPS Document Writer");//Nombre de la impresora ticketera
         }
+
+
     }
-}
+ }

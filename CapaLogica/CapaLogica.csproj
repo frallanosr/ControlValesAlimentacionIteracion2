@@ -54,6 +54,7 @@
     <Compile Include="Usuario\Encripta.cs" />
     <Compile Include="Usuario\Usuario.cs" />
     <Compile Include="Vales\Vales.cs" />
+    <Compile Include="Vales\ValesEspeciales.cs" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

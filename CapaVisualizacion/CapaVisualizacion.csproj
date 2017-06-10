@@ -104,10 +104,12 @@
     <Content Include="agregaTurno.aspx" />
     <Content Include="agregaUsuario.aspx" />
     <Content Include="agregaVales.aspx" />
+    <Content Include="agregaValesVisita.aspx" />
     <Content Include="homeAdministrador.aspx" />
     <Content Include="IMG\logo_seta %281%29.png" />
     <Content Include="IMG\LOGO_SETA.jpg" />
     <Content Include="IMG\LOGO_SETA.png" />
+    <Content Include="LoginAdm.aspx" />
     <Content Include="logout.aspx" />
     <Content Include="packages.config" />
     <Content Include="ApplicationInsights.config">
@@ -169,6 +171,13 @@
     <Compile Include="agregaVales.aspx.designer.cs">
       <DependentUpon>agregaVales.aspx</DependentUpon>
     </Compile>
+    <Compile Include="agregaValesVisita.aspx.cs">
+      <DependentUpon>agregaValesVisita.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="agregaValesVisita.aspx.designer.cs">
+      <DependentUpon>agregaValesVisita.aspx</DependentUpon>
+    </Compile>
     <Compile Include="homeAdministrador.aspx.cs">
       <DependentUpon>homeAdministrador.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -182,6 +191,13 @@
     </Compile>
     <Compile Include="Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="LoginAdm.aspx.cs">
+      <DependentUpon>LoginAdm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="LoginAdm.aspx.designer.cs">
+      <DependentUpon>LoginAdm.aspx</DependentUpon>
     </Compile>
     <Compile Include="logout.aspx.cs">
       <DependentUpon>logout.aspx</DependentUpon>

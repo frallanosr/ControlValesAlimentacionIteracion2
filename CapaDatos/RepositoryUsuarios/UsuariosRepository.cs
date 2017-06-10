@@ -145,6 +145,27 @@ namespace CapaDatos.RepositoryUsuarios
             }
             return false;
         }
+
+         public bool verificaSiExisteUsuario(string rut)
+        {
+            //List<Usuario> lista = new List<Usuario>();//creacion de la lista que contiene los usuarios
+            using (OracleConnection cn = new OracleConnection(this.conexion))//crear conexion
+            {
+                cn.Open();
+                OracleCommand command = cn.CreateCommand();
+                command.CommandText = "Select * from SISTEMA.USUARIO where \"RUT\" = '" + rut + "'";
+                OracleDataReader reader = command.ExecuteReader();
+                if (!reader.HasRows)//si no tiene regitros
+                {
+                    return false;
+                } while (reader.Read())//llenando la lista con objetos tipo usuario
+                {
+                    return true;
+                }
+                cn.Close();
+            }
+            return false;
+        }
     }
 }
 
