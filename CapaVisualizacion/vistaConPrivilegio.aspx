@@ -28,6 +28,10 @@
             }
 
             .lado {}
+             h3{
+                font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+                 font-size:medium;
+            }
         </style>
 
         <div>
@@ -38,7 +42,7 @@
         </div>
         <center>
 
-            <div>SELECCIONE CANTIDAD</div>
+            <h3>SELECCIONE CANTIDAD</h3>
         </center>
         <table border="0">
             <tr>
@@ -76,14 +80,14 @@
             </asp:DropDownList>--%>
 
 
-                <asp:Button ID="Button1" runat="server" Text="IMPRIMIR" style="height: 130px; width: 360px; margin:2px;" class="btn btn-primary"
+                <asp:Button ID="Button1" runat="server" Text="IMPRIMIR" style="height: 130px; width: 300px; margin:2px; font-family:courier;" class="btn btn-primary"
                     OnClick="Button1_Click" />
-                <asp:Button ID="Button3" runat="server" OnClick="Button3_Click" style="height: 130px; width: 360px; margin:2px;" class="btn btn-primary"
-                    Text="IMPRIMIR VALE ESPECIAL" />
+                <asp:Button ID="Button3" runat="server" OnClick="Button3_Click" style="height: 130px; width: 300px; margin:2px;font-family:courier;" class="btn btn-primary"
+                    Text="IMPRIMIR VALE ESPECIAL";/>
                 <br>
                 <br>
                 <br>
-                <asp:Button ID="Button2" runat="server" Text="SALIR" OnClick="Button2_Click" style="height: 130px; width: 360px; margin:2px;"
+                <asp:Button ID="Button2" runat="server" Text="SALIR" OnClick="Button2_Click" style="height: 130px; width: 300px; margin:2px;font-family:courier;"
                     class="btn btn-primary" />
         </div>
 

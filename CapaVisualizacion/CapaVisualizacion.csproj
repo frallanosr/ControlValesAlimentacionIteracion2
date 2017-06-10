@@ -106,9 +106,12 @@
     <Content Include="agregaVales.aspx" />
     <Content Include="agregaValesVisita.aspx" />
     <Content Include="homeAdministrador.aspx" />
+    <Content Include="images\administrador.png" />
+    <Content Include="images\admin_turquesa.png" />
+    <Content Include="images\anterior2.png" />
+    <Content Include="images\flechaIz.png" />
+    <Content Include="images\flecha.png" />
     <Content Include="IMG\logo_seta %281%29.png" />
-    <Content Include="IMG\LOGO_SETA.jpg" />
-    <Content Include="IMG\LOGO_SETA.png" />
     <Content Include="LoginAdm.aspx" />
     <Content Include="logout.aspx" />
     <Content Include="packages.config" />

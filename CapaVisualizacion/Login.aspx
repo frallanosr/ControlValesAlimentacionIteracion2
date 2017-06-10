@@ -6,6 +6,7 @@
 
     <html>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    
 
     <head>
 
@@ -17,6 +18,23 @@
         <link href="css/bootstrap.min.css" rel="stylesheet"/>
         <link href="css/datepicker3.css" rel="stylesheet"/>
         <link href="css/styles.css" rel="stylesheet"/>
+        <style>
+        .btn {
+            border-radius: 3.5px;
+            padding: 3px 7px;
+            font-family: 'courier';
+            font-size: 15px;
+            background-color: dodgerblue;
+        }
+
+            .btn:hover {
+                background-color: Highlight;
+            }
+
+        .img{
+            resize:initial;
+        }
+    </style>
     </head>
 
     <body>
@@ -25,7 +43,6 @@
             <div class="col-xs-10 col-xs-offset-1 col-sm-8 col-sm-offset-2 col-md-4 col-md-offset-4">
                 <div class="login-panel panel panel-default">
                     <div class="panel-heading">
-                        <asp:Image ID="Image1" runat="server" Height="31px" Width="40px" />
                     </div>
                     <div class="panel-body">
                         <form role="form" id="multiple-events">
@@ -49,45 +66,45 @@
                                     <table align="center">
                                         <tr>
                                             <td>
-                                                <input onclick="clave('7', 'campo');" type="button" value="7" name="7" id="boton" style="height: 60px; width: 60px; margin:2px;" class="btn btn-primary"></td>
+                                                <input onclick="clave('7', 'campo');" type="button" value="7" name="7" id="boton" style="height: 80px; width: 80px; margin:3px;" class="btn btn-primary"></td>
                                             &nbsp;<br>
                                             <td>
-                                                <input onclick="clave('8', 'campo');" type="button" value="8" name="8" id="boton" style="height: 60px; width: 60px; margin:2px;" class="btn btn-primary"></td>
+                                                <input onclick="clave('8', 'campo');" type="button" value="8" name="8" id="boton" style="height: 80px; width: 80px; margin:3px;" class="btn btn-primary"></td>
                                             &nbsp;<br>
                                             <td>
-                                                <input onclick="clave('9', 'campo');" type="button" value="9" name="9" id="boton" style="height: 60px; width: 60px ; margin:2px;" class="btn btn-primary"></td>
+                                                <input onclick="clave('9', 'campo');" type="button" value="9" name="9" id="boton" style="height: 80px; width: 80px ; margin:3px;" class="btn btn-primary"></td>
                                             &nbsp;<br>
                                         </tr>
                                         <tr>
                                             <td>
-                                                <input onclick="clave('4', 'campo');" type="button" value="4" name="4" id="boton" style="height: 60px; width: 60px ; margin:2px;" class="btn btn-primary"></td>
+                                                <input onclick="clave('4', 'campo');" type="button" value="4" name="4" id="boton" style="height: 80px; width: 80px ; margin:3px;" class="btn btn-primary"></td>
                                             <td>
-                                                <input onclick="clave('5', 'campo');" type="button" value="5" name="5" id="boton" style="height: 60px; width: 60px ; margin:2px;" class="btn btn-primary"></td>
+                                                <input onclick="clave('5', 'campo');" type="button" value="5" name="5" id="boton" style="height: 80px; width: 80px ; margin:3px;" class="btn btn-primary"></td>
                                             <td>
-                                                <input onclick="clave('6', 'campo');" type="button" value="6" name="6" id="boton" style="height: 60px; width: 60px ; margin:2px;" class="btn btn-primary"></td>
+                                                <input onclick="clave('6', 'campo');" type="button" value="6" name="6" id="boton" style="height: 80px; width: 80px ; margin:3px;" class="btn btn-primary"></td>
                                         </tr>
                                         <tr>
                                             <td>
-                                                <input onclick="clave('1', 'campo'); QuitarFoco();" type="button" value="1" name="1" id="boton" style="height: 60px; width: 60px ; margin:2px;" class="btn btn-primary"></td>
+                                                <input onclick="clave('1', 'campo'); QuitarFoco();" type="button" value="1" name="1" id="boton" style="height: 80px; width: 80px ; margin:3px;" class="btn btn-primary"></td>
                                             <td>
-                                                <input onclick="clave('2', 'campo');" type="button" value="2" name="2" id="boton" style="height: 60px; width: 60px ; margin:2px;" class="btn btn-primary"></td>
+                                                <input onclick="clave('2', 'campo');" type="button" value="2" name="2" id="boton" style="height: 80px; width: 80px ; margin:3px;" class="btn btn-primary"></td>
                                             <td>
-                                                <input onclick="clave('3', 'campo');" type="button" value="3" name="3" id="boton" style="height: 60px; width: 60px ; margin:2px;" class="btn btn-primary"></td>
+                                                <input onclick="clave('3', 'campo');" type="button" value="3" name="3" id="boton" style="height: 80px; width: 80px ; margin:3px;" class="btn btn-primary"></td>
                                         </tr>
 
                                         <tr>
                                             <td>
-                                                <input onclick="clave('k', 'campo');" type="button" value="K" name="k" id="boton" style="height: 60px; width: 60px ; margin:2px;" class="btn btn-primary"></td>
+                                                <input onclick="clave('k', 'campo');" type="button" value="K" name="k" id="boton" style="height: 80px; width: 80px ; margin:3px;" class="btn btn-primary"></td>
                                             <td>
-                                                <input onclick="clave('0', 'campo');" type="button" value="0" name="0" id="boton" style="height: 60px; width: 60px ; margin:2px;" class="btn btn-primary"></td>
+                                                <input onclick="clave('0', 'campo');" type="button" value="0" name="0" id="boton" style="height: 80px; width: 80px ; margin:3px;" class="btn btn-primary"></td>
                                             <td>
-                                                <input type="reset" value="DEL" name="DEL" id="boton" style="height: 60px; width: 60px ; margin:2px;" class="btn btn-primary"></td>
+                                                <input type="reset" value="DEL" name="DEL" id="boton" style="height: 80px; width: 80px ; margin:3px;" class="btn btn-primary"></td>
 
                                         </tr>
                                     </table>
 
                                     <div align="center" style="padding-top: 10px">
-                                        <asp:Button ID="Button1" runat="server" Text="INGRESAR" style="height: 45px; width: 120px; border:groove; font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif" CssClass="btn btn-group-lg" OnClick="Button1_Click" ValidationGroup="btn" />
+                                        <asp:Button ID="Button1" runat="server" Text="INGRESAR" style="height: 60px; width: 180px;" CssClass="btn btn-primary btn-sm btn-block" OnClick="Button1_Click" ValidationGroup="btn" />
                                     </div>
 
 
@@ -101,8 +118,15 @@
         <!-- /.row -->
 
 
+        <p style="margin-left: 1400px; margin-bottom:initial; width: 93px;">
+            <asp:LinkButton ID="LinkButton1" runat="server" OnClick="btn_admin"><img src="images/admin_turquesa.png" /></asp:LinkButton>
+        
+        </p>
+        <span class="sr-only"></span>
+        
+          
 
-        <script src="js/jquery-1.11.1.min.js"></script>
+    </body>
         <script src="js/bootstrap.min.js"></script>
         <script src="js/chart.min.js"></script>
         <script src="js/chart-data.js"></script>
@@ -117,8 +141,5 @@
                 return;
             }
         </script>
-
-    </body>
-
     </html>
 </asp:Content>

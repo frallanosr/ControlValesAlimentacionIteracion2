@@ -22,73 +22,40 @@ namespace CapaVisualizacion
             this.Label1.Visible = false;   
          }
 
+       
+        protected void btn_admin(object sender, EventArgs e)
+        {
+            Response.Redirect("LoginAdm.aspx");
+        }
+
         protected void Button1_Click(object sender, EventArgs e)
         {
-            string rut = r.formatearRut(this.rut.Text);
-            bool rutValidado = r.validarRut(rut);
+            string rut = this.rut.Text.Replace("-", "");
+            string contraseña = this.pass.Text;
+            UsuariosRepository lista = new UsuariosRepository();
+            Encripta en = new Encripta();
 
-            if (rutValidado == false)
+            string contraEncriptada = en.Encriptar(contraseña);
+            if (lista.listaUsuario(rut, contraseña) == false)
             {
-                this.Label1.Visible = true;
-                this.Label1.Text = "Rut o Contraseña Invaidos";
+                Label1.Text = "no";
             }
-            else {
-                this.Label1.Visible = true;
-                this.Label1.Text = "si";
-
-
-                string rutSinPniG = rut.Replace(".","").Replace("-", "");
-                string contraseña = this.pass.Text;
-                UsuariosRepository lista = new UsuariosRepository();
-                Encripta en = new Encripta();
-
-                string contraEncriptada = en.Encriptar(contraseña);
-                if (lista.listaUsuario(rutSinPniG, contraEncriptada) == false)
+            else
+            {
+                if (lista.privilegio(rut, contraseña) == "administrador")
                 {
-                    this.Label1.Visible = true;
-                    Label1.Text = "Rut o Contraseña Invaidos";
+                    Session.Add("rut_administrador", rut);
+                    Response.Redirect("homeAdministrador.aspx");
+                }
+                else if (lista.privilegio(rut, contraseña) == "cajero")
+                {
+                    Label1.Text = "Cajero";
                 }
                 else
                 {
-                    if (lista.privilegio(rutSinPniG, contraEncriptada) == "administrador")
-                    {
-                        Session.Add("rut_conPrivilegios", rutSinPniG);
-                        this.Label1.Visible = true;
-                       Response.Redirect("vistaConPrivilegio.aspx");
-                        // Session.Add("rut_administrador", rutSinPniG);
-                        // Response.Redirect("homeAdministrador.aspx");
-                    }
-                    else if (lista.privilegio(rutSinPniG, contraEncriptada) == "cajero")
-                    {
-                        this.Label1.Visible = true;
-                        Label1.Text = "CAJERO";
-                    }
-                    else if (lista.privilegio(rutSinPniG, contraEncriptada) == "normal")
-                    {
-                        Session.Add("rut_UsuarioNormal", rutSinPniG);
-                        Response.Redirect("VistaNormal.aspx");
-                        //this.Label1.Visible = true;
-                        //Label1.Text = "NORMAL";
-                    }
-                    else if (lista.privilegio(rutSinPniG, contraEncriptada) == "conPrivilegios")
-                    {
-                        
-                         Session.Add("rut_conPrivilegios", rutSinPniG);
-                        this.Label1.Visible = true;
-                        Response.Redirect("vistaConPrivilegio.aspx");
-                    }
-                    else
-                    {
-                        this.Label1.Visible = true;
-                        Label1.Text = "OTRO PRIVILEGIO";
-                    }
+                    Label1.Text = "otro privilegio";
                 }
-
             }
-            
-
-
-           
         }
     }
 }

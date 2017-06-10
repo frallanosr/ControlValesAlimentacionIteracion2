@@ -11,6 +11,14 @@
                 width: 75%;
                 height: 55%;
             }
+            h2{
+                font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+                font-size:medium;
+            }
+            h3{
+                font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+                 font-size:medium;
+            }
         </style>
 
         <form id="form1" runat="server">
@@ -23,7 +31,7 @@
                             <table border="0" style="align-content:center;">
                                 <tr>
                                     <td>
-                                        TURNO 4 ESPECIAL
+                                        <h3>TURNO 4 ESPECIAL</h3>
                                         <br>
                                     </td>
                                 </tr>

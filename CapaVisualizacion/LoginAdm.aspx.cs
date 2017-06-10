@@ -20,6 +20,11 @@ namespace CapaVisualizacion
             this.Label1.Visible = false;   
          }
 
+        protected void arrow(object sender, EventArgs e)
+        {
+            Response.Redirect("~/Login.aspx");
+        }
+
 
         protected void Button1_Click(object sender, EventArgs e)
         {

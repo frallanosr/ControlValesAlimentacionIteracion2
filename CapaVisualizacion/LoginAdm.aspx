@@ -1,4 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/maestraLogin.Master" AutoEventWireup="true" CodeBehind="LoginAdm.aspx.cs" Inherits="CapaVisualizacion.LoginAdm" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -15,6 +16,19 @@
         <link href="css/bootstrap.min.css" rel="stylesheet"/>
         <link href="css/datepicker3.css" rel="stylesheet"/>
         <link href="css/styles.css" rel="stylesheet"/>
+        <style>
+        .btn {
+            border-radius: 3.5px;
+            padding: 3px 7px;
+            font-family: 'courier';
+            font-size: 15px;
+            background-color: dodgerblue;
+        }
+
+            .btn:hover {
+                background-color: Highlight;
+            }
+    </style>
     </head>
 
     <body>
@@ -43,21 +57,26 @@
                                 
 
                                     <div align="center" style="padding-top: 10px">
-                                        <asp:Button ID="Button1" runat="server" Text="INGRESAR" style="height: 45px; width: 120px; border:groove; font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif" CssClass="btn btn-group-lg" OnClick="Button1_Click" ValidationGroup="btn" />
+                                        <asp:Button ID="Button1" runat="server" Text="INGRESAR" style="height: 40px; width: 160px;" CssClass="btn btn-primary btn-sm btn-bloc" OnClick="Button1_Click" ValidationGroup="btn" />
                                     </div>
-
+                            </form>
 
                                 </div>
                           
                     </div>
                 </div>
+                <p style="margin-left: 1400px; margin-bottom:initial;  max-width:100%;">
+            <asp:LinkButton ID="LinkButton1" runat="server" OnClick="arrow" PostBackUrl="~/Login.aspx"><img src="images/flechaIz.png" /></asp:LinkButton>
+        
+            </p>
             </div>
-            <!-- /.col-->
-        </div>
-        <!-- /.row -->
+            
 
 
+        
+       
 
+    </body>
         <script src="js/jquery-1.11.1.min.js"></script>
         <script src="js/bootstrap.min.js"></script>
         <script src="js/chart.min.js"></script>
@@ -65,10 +84,6 @@
         <script src="js/easypiechart.js"></script>
         <script src="js/easypiechart-data.js"></script>
         <script src="js/bootstrap-datepicker.js"></script>
-
-       
-
-    </body>
 
     </html>
 
